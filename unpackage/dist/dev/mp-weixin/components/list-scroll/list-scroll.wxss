@@ -24,13 +24,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-page {
-  height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
+.scroll {
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.home {
+.scroll .list-scroll {
+  height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -38,9 +37,5 @@ page {
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-          flex: 1;
-  overflow: hidden;
 }
 

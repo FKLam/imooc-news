@@ -133,33 +133,25 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
+  props: {
+    list: {
+      type: Array,
+      default: [] } },
+
+
   data: function data() {
     return {
-      list: [{
-        name: 'uni-app' },
-      {
-        name: 'vue' },
-      {
-        name: 'react' },
-      {
-        name: 'java' },
-      {
-        name: '前端' },
-      {
-        name: '后端' },
-      {
-        name: 'vue' },
-      {
-        name: 'react' },
-      {
-        name: 'java' },
-      {
-        name: '前端' },
-      {
-        name: '后端' }] };
+      currentIndex: 0 };
 
+  },
+  methods: {
+    clickTab: function clickTab(item, index) {
+      this.currentIndex = index;
+      this.$emit('click', {
+        data: item,
+        index: index });
 
-  } };exports.default = _default;
+    } } };exports.default = _default;
 
 /***/ }),
 

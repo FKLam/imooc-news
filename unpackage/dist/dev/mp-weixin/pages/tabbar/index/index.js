@@ -105,6 +105,12 @@ var components = {
   },
   tab: function() {
     return __webpack_require__.e(/*! import() | components/tab/tab */ "components/tab/tab").then(__webpack_require__.bind(null, /*! @/components/tab/tab.vue */ 50))
+  },
+  listScroll: function() {
+    return __webpack_require__.e(/*! import() | components/list-scroll/list-scroll */ "components/list-scroll/list-scroll").then(__webpack_require__.bind(null, /*! @/components/list-scroll/list-scroll.vue */ 63))
+  },
+  listCard: function() {
+    return __webpack_require__.e(/*! import() | components/list-card/list-card */ "components/list-card/list-card").then(__webpack_require__.bind(null, /*! @/components/list-card/list-card.vue */ 72))
   }
 }
 var render = function() {
@@ -150,19 +156,35 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
 
 // easyCom components/组件名/组件名.vue 局部引入
 // import navbar from '@/components/navbar/navbar.vue'
 var _default = {
   data: function data() {
     return {
-      title: 'Hello' };
+      title: 'Hello',
+      tabList: [] };
 
   },
   onLoad: function onLoad() {
-
+    this.getLabel();
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    getLabel: function getLabel() {var _this = this;
+      this.$api.get_labe({
+        name: 'get_label' }).
+      then(function (res) {
+        _this.tabList = res.data.data;
+      });
+    },
+    clickTab: function clickTab(data) {
+      console.log(data);
+    } } };exports.default = _default;
 
 /***/ }),
 /* 17 */
