@@ -1,13 +1,13 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+		<!-- 自定义导航栏组件 -->
+		<navbar></navbar>
 	</view>
 </template>
 
 <script>
+	// easyCom components/组件名/组件名.vue 局部引入
+	// import navbar from '@/components/navbar/navbar.vue'
 	export default {
 		data() {
 			return {
@@ -23,7 +23,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		display: flex;
 		flex-direction: column;
