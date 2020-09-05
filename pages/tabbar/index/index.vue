@@ -2,6 +2,7 @@
 	<view class="content">
 		<!-- 自定义导航栏组件 -->
 		<navbar></navbar>
+		<tab></tab>
 	</view>
 </template>
 
