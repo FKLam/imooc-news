@@ -1,18 +1,58 @@
 <template>
 	<view>
-		<view class="list-card">
+		<!-- 基础卡片 -->
+		<view class="list-card" v-if="item.mode === 'base'">
 			<view class="list-card-image">
-				<image src="../../static/logo.png"></image>
+				<image :src="item.cover[0]"></image>
 			</view>
 			<view class="list-card-content">
 				<view class="list-card-content-title">
-					<text>uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架</text>
+					<text>{{item.title}}</text>
+					<likes :item="item"></likes>
 				</view>
 				<view class="list-card-content-desc">
 					<view class="list-card-content-desc-label">
-						<view class="list-card-content-desc-label-item">前端</view>
+						<view class="list-card-content-desc-label-item">{{item.classify}}</view>
 					</view>
-					<view class="list-card-content-desc-browe">120人浏览</view>
+					<view class="list-card-content-desc-browe">{{item.browse_count + '人浏览'}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 多图模式 -->
+		<view class="list-card mode-column" v-if="item.mode === 'column'">
+			<view class="list-card-content">
+				<view class="list-card-content-title">
+					<text>{{item.title}}</text>
+					<likes :item="item"></likes>
+				</view>
+				<view class="list-card-image">
+					<view class="list-card-image-item" v-if="index < 3" v-for="(innerItem, index) in item.cover" :key="index">
+						<image :src="innerItem"></image>
+					</view>
+				</view>
+				<view class="list-card-content-desc">
+					<view class="list-card-content-desc-label">
+						<view class="list-card-content-desc-label-item">{{item.classify}}</view>
+					</view>
+					<view class="list-card-content-desc-browe">{{item.browse_count + '人浏览'}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 大图模式 -->
+		<view class="list-card mode-image" v-if="item.mode === 'image'">
+			<view class="list-card-image">
+				<image :src="item.cover[0]"></image>
+			</view>
+			<view class="list-card-content">
+				<view class="list-card-content-title">
+					<text>{{item.title}}</text>
+					<likes :item="item"></likes>
+				</view>
+				<view class="list-card-content-desc">
+					<view class="list-card-content-desc-label">
+						<view class="list-card-content-desc-label-item">{{item.classify}}</view>
+					</view>
+					<view class="list-card-content-desc-browe">{{item.browse_count + '人浏览'}}</view>
 				</view>
 			</view>
 		</view>
@@ -21,6 +61,14 @@
 
 <script>
 	export default {
+		props: {
+			item: {
+				type: Object,
+				default () {
+					return {}
+				}
+			}
+		},
 		data() {
 			return {
 				
@@ -54,10 +102,12 @@
 			padding-left: 10px;
 			width: 100%;
 			.list-card-content-title {
+				position: relative;
 				font-size: 14px;
 				color: #333;
 				font-weight: 400;
 				line-height: 1.2;
+				padding-right: 30px;
 				text {
 					overflow: hidden;
 					text-overflow: ellipsis;
@@ -83,6 +133,50 @@
 				.list-card-content-desc-browe {
 					color: #999;
 					line-height: 1.5;
+				}
+			}
+		}
+		&.mode-column {
+			.list-card-content {
+				width: 100%;
+				padding-left: 0;
+			}
+			.list-card-image {
+				display: flex;
+				margin-top: 10px;
+				width: 100%;
+				height: 70px;
+				.list-card-image-item {
+					margin-left: 10px;
+					width: 100%;
+					border-radius: 5px;
+					overflow: hidden;
+					&:first-child {
+						margin-left: 0;
+					}
+					image {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			.list-card-content-desc {
+				margin-top: 10px;
+			}
+		}
+		&.mode-image {
+			flex-direction: column;
+			.list-card-image {
+				width: 100%;
+				height: 100px;
+			}
+			.list-card-content {
+				padding-left: 0;
+				margin-top: 10px;
+				.list-card-content-desc {
+					display: flex;
+					align-items: center;
+					margin-top: 10px;
 				}
 			}
 		}

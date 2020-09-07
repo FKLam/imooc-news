@@ -6,3 +6,17 @@ export const get_labe = (data) => {
 		data
 	})
 }
+
+export const get_list = (data) => {
+	return $http({
+		url: 'get_list',
+		data
+	})
+}
+
+export const update_likes = (data) => {
+	return $http({
+		url: 'update_like',
+		data
+	})
+}

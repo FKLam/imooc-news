@@ -17,12 +17,21 @@
 			list: {
 				type: Array,
 				default: []
+			},
+			tabIndex: {
+				type: Number,
+				default: 0
 			}
 		},
 		data() {
 			return {
 				currentIndex: 0
 			};
+		},
+		watch: {
+			tabIndex (newVal, oldVal) {
+				this.currentIndex = newVal
+			}
 		},
 		methods: {
 			clickTab (item, index) {

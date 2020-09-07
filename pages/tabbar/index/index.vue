@@ -2,12 +2,10 @@
 	<view class="home">
 		<!-- 自定义导航栏组件 -->
 		<navbar></navbar>
-		<tab :list="tabList" @click="clickTab"></tab>
-		<list-scroll>
-			<list-card v-for="(item, index) in 5" :key="index">
-				
-			</list-card>
-		</list-scroll>
+		<tab :list="tabList" @click="clickTab" :tabIndex="tabIndex"></tab>
+		<view class="home-list">
+			<list :tab="tabList" @change="change" :activeIndex="activeIndex"></list>
+		</view>
 	</view>
 </template>
 
@@ -18,7 +16,9 @@
 		data() {
 			return {
 				title: 'Hello',
-				tabList: []
+				tabList: [],
+				tabIndex: 0,
+				activeIndex: 0
 			}
 		},
 		onLoad() {
@@ -29,11 +29,22 @@
 				this.$api.get_labe({
 					name: 'get_label'
 				}).then((res) => {
-					this.tabList = res.data.data
+					const {data} = res.data
+					data.unshift({
+						name: '全部'
+					})
+					this.tabList = data
 				})
 			},
-			clickTab (data) {
-				console.log(data)
+			clickTab ({data, index}) {
+				if (index === this.activeIndex) {
+					return
+				}
+				this.activeIndex = index
+			},
+			change (current) {
+				this.tabIndex = current
+				this.activeIndex = current
 			}
 		}
 	}
@@ -49,5 +60,9 @@
 		flex-direction: column;
 		flex: 1;
 		overflow: hidden;
+		.home-list {
+			flex: 1;
+			box-sizing: border-box;
+		}
 	}
 </style>
