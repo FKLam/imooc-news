@@ -12,6 +12,7 @@
 <script>
 	// easyCom components/组件名/组件名.vue 局部引入
 	// import navbar from '@/components/navbar/navbar.vue'
+	import {mapState} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -21,14 +22,30 @@
 				activeIndex: 0
 			}
 		},
+		computed: {
+			...mapState([
+				'is_edited'
+			])
+		},
 		onLoad() {
 			this.getLabel()
+			uni.$on('labelChange', (res) => {
+				console.log('labelChange')
+				this.tabList = []
+				this.tabIndex = 0
+				this.activeIndex = 0
+				this.getLabel()
+			})
 		},
 		methods: {
 			getLabel () {
-				this.$api.get_labe({
-					name: 'get_label'
-				}).then((res) => {
+				let params = {
+					type: 'all'
+				}
+				if (this.is_edited) {
+					params = {}
+				}
+				this.$api.get_label(params).then((res) => {
 					const {data} = res.data
 					data.unshift({
 						name: '全部'

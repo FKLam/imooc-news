@@ -1,6 +1,6 @@
 <template>
 	<list-scroll class="list-scroll" @loadmore="loadMore">
-		<list-card mode="base" v-for="(item, index) in list" :key="item._id" :item="item"></list-card>
+		<list-card mode="base" v-for="(item, index) in list" :key="item._id + item.name" :item="item"></list-card>
 		<uni-load-more type="snow" :status="loadStatus.loading"></uni-load-more>
 	</list-scroll>
 </template>
