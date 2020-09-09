@@ -167,6 +167,7 @@
 						title: this.formData.is_author_like ? '关注作者成功' : '取消关注作者',
 						icon: 'none'
 					})
+					uni.$emit('update_author')
 				})
 			},
 			like () {
@@ -184,7 +185,7 @@
 						title: this.formData.is_like ? '文章收藏成功' : '取消收藏文章',
 						icon: 'none'
 					})
-					uni.$emit('update_article')
+					uni.$emit('update_article', 'follow')
 				})
 			},
 			thumbs () {

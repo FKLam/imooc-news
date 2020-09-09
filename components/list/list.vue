@@ -44,10 +44,12 @@
 		},
 		// onLoad 在页面中，created 组件中
 		created () {
-			uni.$on('update_article', () => {
-				this.load = {}
-				this.listCacheData = {}
-				this.getList(this.activeIndex)
+			uni.$on('update_article', (e) => {
+				if (e === 'follow') {
+					this.load = {}
+					this.listCacheData = {}
+					this.getList(this.activeIndex)
+				}
 			})
 		},
 		methods: {

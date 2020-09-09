@@ -8,7 +8,7 @@
 			<view class="list-card-content">
 				<view class="list-card-content-title">
 					<text>{{item.title}}</text>
-					<likes :item="item"></likes>
+					<likes :item="item" :types="types"></likes>
 				</view>
 				<view class="list-card-content-desc">
 					<view class="list-card-content-desc-label">
@@ -23,7 +23,7 @@
 			<view class="list-card-content">
 				<view class="list-card-content-title">
 					<text>{{item.title}}</text>
-					<likes :item="item"></likes>
+					<likes :item="item" :types="types"></likes>
 				</view>
 				<view class="list-card-image">
 					<view class="list-card-image-item" v-if="index < 3" v-for="(innerItem, index) in item.cover" :key="index">
@@ -46,7 +46,7 @@
 			<view class="list-card-content">
 				<view class="list-card-content-title">
 					<text>{{item.title}}</text>
-					<likes :item="item"></likes>
+					<likes :item="item" :types="types"></likes>
 				</view>
 				<view class="list-card-content-desc">
 					<view class="list-card-content-desc-label">
@@ -67,6 +67,10 @@
 				default () {
 					return {}
 				}
+			},
+			types: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {

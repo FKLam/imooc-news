@@ -12,6 +12,10 @@
 				default () {
 					return {}
 				}
+			},
+			types: {
+				type: String,
+				default: ''
 			}
 		},
 		data() {
@@ -44,6 +48,7 @@
 						icon: 'none'
 					})
 					console.log(res)
+					uni.$emit('update_article', this.types)
 				})
 				.catch(() => {
 					uni.hideLoading()
