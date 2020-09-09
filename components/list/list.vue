@@ -43,9 +43,13 @@
 			}
 		},
 		// onLoad 在页面中，created 组件中
-		// created () {
-		// 	this.getList(this.activeIndex)
-		// },
+		created () {
+			uni.$on('update_article', () => {
+				this.load = {}
+				this.listCacheData = {}
+				this.getList(this.activeIndex)
+			})
+		},
 		methods: {
 			change (e) {
 				const {current} = e.detail
