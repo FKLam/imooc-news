@@ -83,3 +83,24 @@ export const get_author = (data) => {
 		data
 	})
 }
+
+export const get_user = (data) => {
+	return $http({
+		url: 'get_user',
+		data
+	})
+}
+
+export const get_my_article = (data) => {
+	return $http({
+		url: 'get_my_article',
+		data
+	})
+}
+
+export const update_feedback = (data) => {
+	return $http({
+		url: 'update_feedback',
+		data
+	})
+}
