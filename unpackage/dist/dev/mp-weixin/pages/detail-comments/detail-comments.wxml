@@ -1,0 +1,1 @@
+<view class="detail-comments"><block wx:for="{{commentsLsit}}" wx:for-item="item" wx:for-index="index" wx:key="comment_id"><view class="comments-content"><comment-box vue-id="{{'c2657fc4-1-'+index}}" comments="{{item}}" bind:__l="__l"></comment-box></view></block><uni-load-more vue-id="c2657fc4-2" iconType="snow" status="{{loading}}" bind:__l="__l"></uni-load-more></view>

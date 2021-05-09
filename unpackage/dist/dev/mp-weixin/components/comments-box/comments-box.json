@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "comment-box": "/components/comments-box/comments-box"
+  }
+}

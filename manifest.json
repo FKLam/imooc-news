@@ -72,7 +72,20 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "h5" : {
+        "title" : "慕课新闻",
+        "router" : {
+            "mode" : "history",
+            "base" : "/news/"
+        },
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        },
+        "domain" : "www.fkunlam.cn"
     }
 }

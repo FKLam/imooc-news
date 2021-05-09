@@ -24,11 +24,16 @@
 		},
 		computed: {
 			...mapState([
-				'is_edited'
+				'is_edited',
+				'userInfo'
 			])
 		},
+		watch: {
+			userInfo (newVal, oldVal) {
+				this.getLabel()
+			}
+		},
 		onLoad() {
-			this.getLabel()
 			uni.$on('labelChange', (res) => {
 				console.log('labelChange')
 				this.tabList = []
